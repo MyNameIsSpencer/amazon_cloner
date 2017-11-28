@@ -1,16 +1,16 @@
 class ReviewsController < ApplicationController
 
   def create
-      @product = Product.find(params[:id])
-      @review = @product.reviews.build(params[:review])
+    # @review = @product.reviews.build(review_params)
+    @review = Review.new
+    @review.comment = params[:review][:comment]
+    @review.product_id = params[:product_id]
 
-      if @review.save
-        ;flash[:notice] = 'Review was successfully created.'
-        redirect_to @picture
-      else
-        flash[:notice] = "Error creating review: #{@review.errors}"
-        redirect_to @picture
-      end
+    if @review.save
+      flash[:notice] = "You have successfully added a review"
+      redirect_to product_path(params[:product_id])
+    end
+
     end
 
 
