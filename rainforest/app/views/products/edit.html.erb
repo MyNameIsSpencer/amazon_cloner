@@ -1,1 +1,3 @@
-EDIT
+<h1>Editing <%= link_to @product.name, product_path(@product) %></h1>
+
+<%= render'product_form', product: @product %>

@@ -33,11 +33,11 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @product.name = params[:product][:name]
-    @product.description [:product][:description]
-    @product.price_in_cents [:product][:price_in_cents]
+    @product.description = params[:product][:description]
+    @product.price_in_cents = params[:product][:price_in_cents]
 
     if @product.save
-      redirect_to products_path(@product)
+      redirect_to product_path(@product)
     else
       render :edit
     end
