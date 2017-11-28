@@ -39,7 +39,6 @@ class ProductsController < ApplicationController
     @product.name = params[:product][:name]
     @product.description = params[:product][:description]
     @product.price_in_cents = params[:product][:price_in_cents]
-
     if @product.save
       flash[:notice] = "You have successfully edited this PRODUCT!!!!"
       redirect_to product_path(@product)

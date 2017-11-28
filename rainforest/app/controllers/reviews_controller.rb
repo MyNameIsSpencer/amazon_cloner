@@ -18,8 +18,9 @@ class ReviewsController < ApplicationController
 
 
   def edit
-  @product = Product.find(params[:id])
-  @review  = Review.find(params[:product_id])
+
+  @review  = Review.find(params[:id])
+  @product = @review.product
   end
 
     def update
@@ -38,8 +39,14 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-
+    @review  = Review.find(params[:id])
+    @product = @review.product
+    if @review.destroy
+      flash[:notice] = "Review deleted."
+      redirect_to product_path(@product)
+    else
+      redirect_to edit_product_review_path(@review)
+    end
   end
-
 
 end
