@@ -11,11 +11,12 @@ class ReviewsController < ApplicationController
       redirect_to product_path(params[:product_id])
     end
 
-    end
+  end
 
 
 
   def edit
+    @review = Review.find(params[:id])
 
   end
 
