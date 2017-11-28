@@ -1,3 +1,17 @@
 INDEX
 
-blah blah blah
+<%= link_to "Add new product", new_product_path %>
+<br>
+
+
+  <% @products.each do |product| %>
+    <br>
+    <section class="product">
+      <p> Name: <%= product.name %> </p>
+      <p> Description: <%= product.description %> </p>
+      <p> Price: <%= product.price_in_cents %>   Space Dollars</p>
+      <p> <%= link_to 'View', product_path(product) %> <%= link_to 'Edit', edit_product_path(product) %> <%= link_to 'Delete', product_path(product), method: :delete, data: {confirm: "Are you sure?" } %> </p>
+
+    </section>
+
+  <% end %>
