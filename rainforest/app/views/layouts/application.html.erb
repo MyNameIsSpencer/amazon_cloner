@@ -6,9 +6,15 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+    <nav>
+    <%= link_to 'Home', products_path %> |
+    <%= link_to 'New Product', new_product_path %>
+  </nav>
     <%= yield %>
+
   </body>
 </html>
