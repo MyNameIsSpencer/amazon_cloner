@@ -1,10 +1,17 @@
 <h1>Add a Product</h1>
 
 <% if @product.errors.any?%>
-  <p>Error, unable to save Product. Please check your data and try again. </p>
-<%end%>
+    <div id="error_explanation">
+      <p><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</p>
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to("Back to Products", "/Products") %>
+<%= link_to("Back to Products", products_path) %>
 
 <%= form_for(@product) do |f| %>
   <p>
@@ -20,6 +27,6 @@
     <%= f.text_field :price_in_cents %>
   </p>
   <p>
-    <%= f.submit "Save" %>
+    <%= f.submit "Create Product" %>
   </p>
 <% end %>
